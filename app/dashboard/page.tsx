@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { loadUserProfile } from '@/lib/user';
+import { loadUserProfile, UserProfile } from '@/lib/user';
 import { loadUserStats, getDefaultStats } from '@/lib/gamification';
 import { languages } from '@/lib/languages';
 import ProgressBar from '@/components/ProgressBar';
@@ -9,8 +9,8 @@ import Link from 'next/link';
 
 export default function DashboardPage() {
   // Initialize with null or default values - DON'T call localStorage functions here
- const [stats, setStats] = useState(getDefaultStats());
-  const [profile, setProfile] = useState(null);
+  const [stats, setStats] = useState(getDefaultStats());
+  const [profile, setProfile] = useState<UserProfile | null>(null);
   const [progress, setProgress] = useState<Record<string, boolean>>({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -201,5 +201,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-
